@@ -4,7 +4,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class Annuity {
-   private double deposit1, rate;
+   private double deposit1, depositEndOfMonth, rate;
    private int term;
    private double[] bbal, iearn, ebal;
    private boolean built;
@@ -19,6 +19,14 @@ public class Annuity {
    
    public Annuity(double deposit1, double rate, int term) {
        this.deposit1 = deposit1;
+       this.rate = rate;
+       this.term = term;
+       buildAnnuity();
+   }
+   
+   public Annuity(double deposit1, double depositEndOfMonth, double rate, int term) {
+       this.deposit1 = deposit1;
+       this.depositEndOfMonth = depositEndOfMonth;
        this.rate = rate;
        this.term = term;
        buildAnnuity();
@@ -81,9 +89,9 @@ public class Annuity {
        //return ;
    }
 
-    public void setDeposit(double deposit)
+    public void setDeposit(double deposit1)
     {
-        this.deposit1 = deposit;
+        this.deposit1 = deposit1;
     }
 
     public void setRate(double rate)
