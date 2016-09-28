@@ -11,18 +11,23 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+            integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <title>Annuity Results</title>
     </head>
     <body>
-        <h1>Annuity Results</h1>
-        <p>
+        <h1 class="text-center">Annuity Results</h1>
+        <hr>
+        <br>
+        <br>
+        <h4 class="text-center">
             An annuity with deposit of: ${annuity.deposit} each month earning 
             ${annuity.rate} annually will have a value of:
             ${annuity.finalValue} after
             ${annuity.term} months.
-        </p>
+        </h4>
         
-        <p> Using  standard jsp tags: <br>
+        <p class="text-center"> Using  standard jsp tags: <br>
             An annuity with deposit of: 
             <jsp:getProperty name="annuity" property="deposit" />
             each month earning 

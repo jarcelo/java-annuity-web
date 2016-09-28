@@ -4,21 +4,21 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class Annuity {
-   private double deposit, rate;
+   private double deposit1, rate;
    private int term;
    private double[] bbal, iearn, ebal;
    private boolean built;
    private NumberFormat currency = NumberFormat.getCurrencyInstance();
 
    public Annuity() {
-       this.deposit = 0;
+       this.deposit1 = 0;
        this.rate = 0;
        this.term = 0;
        this.built = false;
    }
    
-   public Annuity(double deposit, double rate, int term) {
-       this.deposit = deposit;
+   public Annuity(double deposit1, double rate, int term) {
+       this.deposit1 = deposit1;
        this.rate = rate;
        this.term = term;
        buildAnnuity();
@@ -29,7 +29,7 @@ public class Annuity {
 //   }
    
    public String getDeposit() {
-       return currency.format(this.deposit);
+       return currency.format(this.deposit1);
    }
 
    public double getRate() {
@@ -63,6 +63,7 @@ public class Annuity {
        }
        return this.ebal[m-1];
    }
+   // for deposits at the beginning of the month
    private void buildAnnuity() {
        bbal = new double[term];
        iearn = new double[term];
@@ -73,16 +74,16 @@ public class Annuity {
            if (i > 0) {
                bbal[i] = ebal[i-1];
            }
-           iearn[i] = (bbal[i] + this.deposit) * (this.rate / 12.0);
-           ebal[i] = (bbal[i] + this.deposit + iearn[i]);
+           iearn[i] = (bbal[i] + this.deposit1) * (this.rate / 12.0);
+           ebal[i] = (bbal[i] + this.deposit1 + iearn[i]);
        }
        built = true;
-       return ;
+       //return ;
    }
 
     public void setDeposit(double deposit)
     {
-        this.deposit = deposit;
+        this.deposit1 = deposit;
     }
 
     public void setRate(double rate)
@@ -102,7 +103,7 @@ public class Annuity {
         }
         for (int i = 0; i < this.term; i++) {
             AnnuityMonth m = new AnnuityMonth(
-                    (i+1), this.bbal[i], this.deposit,
+                    (i+1), this.bbal[i], this.deposit1,
                     this.iearn[i], this.ebal[i]);
             months.add(m);
         }

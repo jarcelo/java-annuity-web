@@ -25,23 +25,35 @@ public class AnnuityCalcServlet extends HttpServlet
         String URL = "/AnnuityResults.jsp";
         String errorMessage = "";
         
-        double deposit, rate;
+        double deposit1, deposit2, rate;
         int term;
         
         Annuity annuity = new Annuity();
-        
+        // deposit at beginning of month
         try {
-            deposit = Double.parseDouble(request.getParameter("amt1"));
-            if (deposit <= 0) {
+            deposit1 = Double.parseDouble(request.getParameter("amt1"));
+            if (deposit1 <= 0) {
                 errorMessage += "Beginning deposit must be more than 0. <br>";
             }
             else {
-                annuity.setDeposit(deposit);
+                annuity.setDeposit(deposit1);
             }
         }catch(Exception e) {
             errorMessage += "Deposit error: " + e.getMessage() + "<br>";
         }
-        
+        // deposit at end of month
+        try {
+            deposit2 = Double.parseDouble(request.getParameter("amt1"));
+            if (deposit2 <= 0) {
+                errorMessage += "Beginning deposit must be more than 0. <br>";
+            }
+            else {
+                annuity.setDeposit(deposit2);
+            }
+        }catch(Exception e) {
+            errorMessage += "Deposit error: " + e.getMessage() + "<br>";
+        }
+
         try {
             rate = Double.parseDouble(request.getParameter("irt"));
             if (rate <= 0) {
