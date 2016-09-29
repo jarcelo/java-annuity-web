@@ -39,9 +39,14 @@ public class AnnuityMonth
         this.month = month;
     }
 
-    public double getBeginningBalance()
+//    public double getBeginningBalance()
+//    {
+//        return beginningBalance;
+//    }
+    
+    public String getBeginningBalance()
     {
-        return beginningBalance;
+        return currency.format(beginningBalance);
     }
 
     public void setBeginningBalance(double beginningBalance)
