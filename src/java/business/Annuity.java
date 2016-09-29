@@ -4,41 +4,41 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class Annuity {
-   private double deposit1, depositEndOfMonth, rate;
+   private double depositStartOfMonth, depositEndOfMonth, rate;
    private int term;
    private double[] bbal, iearn, ebal;
    private boolean built;
    private NumberFormat currency = NumberFormat.getCurrencyInstance();
 
    public Annuity() {
-       this.deposit1 = 0;
+       this.depositStartOfMonth = 0;
        this.rate = 0;
        this.term = 0;
        this.built = false;
    }
    
-   public Annuity(double deposit1, double rate, int term) {
-       this.deposit1 = deposit1;
+   public Annuity(double depositStartOfMonth, double rate, int term) {
+       this.depositStartOfMonth = depositStartOfMonth;
        this.rate = rate;
        this.term = term;
        buildAnnuity();
    }
    
-   public Annuity(double deposit1, double depositEndOfMonth, double rate, int term) {
-       this.deposit1 = deposit1;
+   public Annuity(double depositStartOfMonth, double depositEndOfMonth, double rate, int term) {
+       this.depositStartOfMonth = depositStartOfMonth;
        this.depositEndOfMonth = depositEndOfMonth;
        this.rate = rate;
        this.term = term;
        buildAnnuity();
    }
 
-//   public double getDeposit() {
-//       return this.deposit;
-//   }
-   
-   public String getDeposit() {
-       return currency.format(this.deposit1);
+   public double getDepositStartOfMonth() {
+       return this.depositStartOfMonth;
    }
+   
+//   public String getDepositStartOfMonth() {
+//       return currency.format(this.depositStartOfMonth);
+//   }
 
    public double getRate() {
        return this.rate;
@@ -52,6 +52,7 @@ public class Annuity {
            buildAnnuity();
        }
        return ebal[term-1];
+       //return ebal[term];
    }
    public double getBegBal(int m) {
        if (!built) {
@@ -64,6 +65,7 @@ public class Annuity {
            buildAnnuity();
        }
        return this.iearn[m-1];
+
    }
    public double getEndBal(int m) {
        if (!built) {
@@ -73,25 +75,34 @@ public class Annuity {
    }
    // for deposits at the beginning of the month
    private void buildAnnuity() {
-       bbal = new double[term];
+       bbal  = new double[term];
        iearn = new double[term];
-       ebal = new double[term];
+       ebal  = new double[term];
 
        bbal[0] = 0;
-       for (int i=0; i < this.term; i++) {
+       // Annuity Due (Begin of each month)
+//       for (int i=0; i < this.term; i++) {
+//           if (i > 0) {
+//               bbal[i] = ebal[i-1];
+//           }
+//           iearn[i] = (bbal[i] + this.depositStartOfMonth) * (this.rate / 12.0);
+//           ebal[i] = (bbal[i] + this.depositStartOfMonth + iearn[i]);
+//       }
+       // Ordinary Annuity (End of each month)
+        for (int i = 0; i < this.term; i++) {
            if (i > 0) {
                bbal[i] = ebal[i-1];
            }
-           iearn[i] = (bbal[i] + this.deposit1) * (this.rate / 12.0);
-           ebal[i] = (bbal[i] + this.deposit1 + iearn[i]);
+           iearn[i] = ((bbal[i]) * (this.rate / 12.0));// + this.depositStartOfMonth;
+           ebal[i] = (bbal[i] + this.depositStartOfMonth + iearn[i]);
        }
        built = true;
        //return ;
    }
 
-    public void setDeposit(double deposit1)
+    public void setDepositStartOfMonth(double depositStartOfMonth)
     {
-        this.deposit1 = deposit1;
+        this.depositStartOfMonth = depositStartOfMonth;
     }
 
     public void setRate(double rate)
@@ -111,10 +122,22 @@ public class Annuity {
         }
         for (int i = 0; i < this.term; i++) {
             AnnuityMonth m = new AnnuityMonth(
-                    (i+1), this.bbal[i], this.deposit1,
+                    (i+1), this.bbal[i], this.depositStartOfMonth,
                     this.iearn[i], this.ebal[i]);
             months.add(m);
         }
         return months;
     }
+
+    // TODO: Check if this needs to be converted to a string so it can be formatted
+    public double getDepositEndOfMonth()
+    {
+        return depositEndOfMonth;
+    }
+
+    public void setDepositEndOfMonth(double depositEndOfMonth)
+    {
+        this.depositEndOfMonth = depositEndOfMonth;
+    }
 }
+
