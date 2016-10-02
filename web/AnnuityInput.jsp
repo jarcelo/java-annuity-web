@@ -13,8 +13,12 @@
     <body>
         <div class="jumbotron">
             <div class="container">
-            <h1 class="text-center">Annuity Calculator</h1>
-            <hr>
+            <h2 class="text-center">Annuity Calculator</h1>
+            <br>
+            <div class="text-danger col-sm-4 col-sm-offset-4">
+                ${errorMessage}
+            </div>
+            <br>
             <form action="AnnuityCalc" name="adata" id="adata" method="post" class="form-horizontal">
                 <br>
                 <br>
@@ -22,15 +26,19 @@
                     <label  for="amt1" class="col-sm-5 control-label">Deposit at Beginning of Month</label>
                     <div class="input-group col-sm-3">
                         <div class="input-group-addon">$</div>
-                        <input class="form-control" type="text" name="amt1" id="amt1" value="${annuity.depositStartOfMonth}" placeholder="Deposit 1"/>
+                        <input class="form-control" type="text" name="amt1" id="amt1" 
+                               value="${annuity.depositStartOfMonth > 0.0 ? annuity.depositStartOfMonth : 0.0}" 
+                               placeholder="Deposit 1"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="amt2" class="col-sm-5 control-label">Deposit at End of the Month</label>
+                    <label for="amt2" class="col-sm-5 control-label">Deposit at End of Month</label>
                     <div class="input-group col-sm-3">
                         <div class="input-group-addon">$</div>
-                        <input class="form-control" type="text" name="amt2" id="amt2" value="${annuity.depositEndOfMonth}" placeholder="Deposit 2"/>
+                        <input class="form-control" type="text" name="amt2" id="amt2" 
+                               value="${annuity.depositEndOfMonth > 0.0 ? annuity.depositEndOfMonth : 0.0}" 
+                               placeholder="Deposit 2"/>
                     </div>
                 </div>
 
@@ -38,7 +46,8 @@
                     <label for="irt" class="col-sm-5 control-label">Annual Interest Rate</label>
                     <div class="input-group col-sm-3">
                         <div class="input-group-addon">i</div>
-                        <input class="form-control" type="text" name="irt" id="irt" value="${annuity.rate}" placeholder="Rate in decimal"/>
+                        <input class="form-control" type="text" name="irt" id="irt" value="${annuity.rate}" 
+                               placeholder="Rate in decimal"/>
                     </div>
                 </div>
 
@@ -46,7 +55,8 @@
                     <label for="term" class="col-sm-5 control-label">Term (in months)</label>
                     <div class="input-group col-sm-3">
                         <div class="input-group-addon">t</div>
-                        <input class="form-control" type="text" name="term" id="term" value="${annuity.term}" placeholder="Term in months"/>
+                        <input class="form-control" type="text" name="term" id="term" value="${annuity.term}" 
+                               placeholder="Term in months"/>
                     </div>
                 </div>
 
@@ -57,24 +67,13 @@
                         <input class="form-control btn btn-success btn-block" type="submit" value="Calculate"/>
                     </div>
                 </div>
-
-
-<!--
-                Deposit at Begining of Month:
-                <input type="text" name="amt1" id="amt1" value="${annuity.depositStartOfMonth}"/><br><br>
-                Deposit at End of Month:
-                <input type="text" name="amt2" id="amt2" value=""/><br><br>
-                Annual Interest Rate:
-                <input type="text" name="irt" id="irt" value="${annuity.rate}"/><br><br>
-                Term(in mos):
-                <input type="text" name="term" id="term" value="${annuity.term}"/><br><br>
-                <input type="submit" value="Calculate"/>
--->
             </form>   
-
-            <div>
-                ${errorMessage}
-            </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
             </div>
         </div><!-- .jumbotron -->
     </body>
