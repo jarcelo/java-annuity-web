@@ -70,7 +70,7 @@ public class AnnuityCalcServlet extends HttpServlet
         try {
             term = Integer.parseInt(request.getParameter("term"));
             if (term <= 0) {
-                errorMessage += "Beginning deposit must be more than 0. <br>";
+                errorMessage += "Term must be more than 0. <br>";
             }
             else {
                 annuity.setTerm(term);
