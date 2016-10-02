@@ -17,12 +17,12 @@
     </head>
     <body>
         <div class="container">
-            <h1 class="text-center">Annuity Schedule</h1> <br>
+            <h2 class="text-center">Annuity Schedule</h1> <br>
             <h4 class="text-center">
-                An annuity with deposit of: ${annuity.depositStartOfMonth} at start of month
-                and a deposit of: ${annuity.depositEndOfMonth} at end of month earning 
-                ${annuity.rate} annually will have a value of:
-                ${annuity.finalValue} after
+                An annuity with deposit of: ${annuity.formattedDepositStartOfMonth} at start of month
+                and a deposit of: ${annuity.formattedDepositEndOfMonth} at end of month earning 
+                ${annuity.formattedRate} annually will have a value of:
+                ${annuity.formattedFinalValue} after
                 ${annuity.term} months.
             </h4>
             <br>
@@ -49,13 +49,6 @@
             </form>
             <br>
             <br>
-            <!--
-            <a href="AnnuityInput.jsp">New Annuity</a>
-            <% 
-                //session.invalidate(); 
-                //request.getSession().removeAttribute("annuity");
-            %>
-            -->
         </div> 
     </body>
 </html>

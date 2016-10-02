@@ -11,9 +11,11 @@ public class Annuity {
            bbalDeposit2, iearnDeposit2, ebalDeposit2;
    private boolean built;
    private NumberFormat currency = NumberFormat.getCurrencyInstance();
+   private NumberFormat percent = NumberFormat.getPercentInstance();
 
    public Annuity() {
        this.depositStartOfMonth = 0;
+       this.depositEndOfMonth = 0;
        this.rate = 0;
        this.term = 0;
        this.built = false;
@@ -38,17 +40,22 @@ public class Annuity {
        return this.depositStartOfMonth;
    }
    
-//   public String getDepositStartOfMonth() {
-//       return currency.format(this.depositStartOfMonth);
-//   }
-
+   public String getFormattedDepositStartOfMonth() {
+       return currency.format(getDepositStartOfMonth());
+   }
+   
    public double getRate() {
        return this.rate;
+   }
+   
+   public String getFormattedRate() {
+       return percent.format(this.rate);
    }
 
    public int getTerm() {
        return this.term;
    }
+   
    public double getFinalValue() {
        if (!built) {
            buildAnnuity();
@@ -56,6 +63,11 @@ public class Annuity {
        //return ebal[term-1];
        return ebalDeposit1[term-1] + ebalDeposit2[term-1];
    }
+   
+   public String getFormattedFinalValue(){
+       return currency.format(getFinalValue());
+   }
+   
    public double getBegBal(int m) {
        if (!built) {
            buildAnnuity();
@@ -176,13 +188,15 @@ public class Annuity {
     }
 
     // TODO: Check if this needs to be converted to a string so it can be formatted
-    public double getDepositEndOfMonth()
-    {
+    public double getDepositEndOfMonth() {
         return depositEndOfMonth;
     }
 
-    public void setDepositEndOfMonth(double depositEndOfMonth)
-    {
+    public String getFormattedDepositEndOfMonth() {
+        return currency.format(this.depositEndOfMonth);
+    }
+    
+    public void setDepositEndOfMonth(double depositEndOfMonth){
         this.depositEndOfMonth = depositEndOfMonth;
     }
 }

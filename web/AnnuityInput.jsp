@@ -15,11 +15,13 @@
             <div class="container">
             <h2 class="text-center">Annuity Calculator</h1>
             <br>
-            <div class="text-danger col-sm-4 col-sm-offset-4">
-                ${errorMessage}
+            <div class="row">
+                <div class="text-danger col-sm-4 col-sm-offset-4">
+                    ${errorMessage}
+                </div>
             </div>
-            <br>
-            <form action="AnnuityCalc" name="adata" id="adata" method="post" class="form-horizontal">
+            <div class="row">
+                <form action="AnnuityCalc" name="adata" id="adata" method="post" class="form-horizontal">
                 <br>
                 <br>
                 <div class="form-group">
@@ -67,7 +69,8 @@
                         <input class="form-control btn btn-success btn-block" type="submit" value="Calculate"/>
                     </div>
                 </div>
-            </form>   
+            </form>  
+            </div>
                 <br>
                 <br>
                 <br>
@@ -75,6 +78,6 @@
                 <br>
                 <br>
             </div>
-        </div><!-- .jumbotron -->
+        </div>
     </body>
 </html>
