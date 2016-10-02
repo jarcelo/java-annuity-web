@@ -19,25 +19,26 @@
         <div class="container">
             <h1 class="text-center">Annuity Schedule</h1> <br>
             <h4 class="text-center">
-                An annuity with deposit of: ${annuity.deposit} each month earning 
+                An annuity with deposit of: ${annuity.depositStartOfMonth} at start of month
+                and a deposit of: ${annuity.depositEndOfMonth} at end of month earning 
                 ${annuity.rate} annually will have a value of:
                 ${annuity.finalValue} after
                 ${annuity.term} months.
             </h4>
-
+            <br>
             <table class="table">
                 <tr>
-                    <th>Month</th>
-                    <th>Beg. Balance</th>
-                    <th>Int.Earned</th>
-                    <th>End. Balance</th>
+                    <th class="text-center">Month</th>
+                    <th class="text-center">Beginning Balance</th>
+                    <th class="text-center">Interest Earned</th>
+                    <th class="text-center">Ending Balance</th>
                 </tr>
                 <c:forEach var="annuityMonth" items="${annuity.months}">
                     <tr>
-                        <td>${annuityMonth.month}</td>
-                        <td>${annuityMonth.beginningBalance}</td>
-                        <td>${annuityMonth.interestEarned}</td>
-                        <td>${annuityMonth.endingBalance}</td>
+                        <td class="text-center">${annuityMonth.month}</td>
+                        <td class="text-center">${annuityMonth.beginningBalance}</td>
+                        <td class="text-center">${annuityMonth.interestEarned}</td>
+                        <td class="text-center">${annuityMonth.endingBalance}</td>
                     </tr>
                 </c:forEach>
             </table>
@@ -55,6 +56,6 @@
                 //request.getSession().removeAttribute("annuity");
             %>
             -->
-        </div> <!-- .container -->
+        </div> 
     </body>
 </html>

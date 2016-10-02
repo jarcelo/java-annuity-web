@@ -29,29 +29,30 @@ public class AnnuityCalcServlet extends HttpServlet
         int term;
         
         Annuity annuity = new Annuity();
+        // Deposits can be made at beginning of the month, end of the month or both
         // deposit at beginning of month
         try {
             deposit1 = Double.parseDouble(request.getParameter("amt1"));
-            if (deposit1 <= 0) {
-                errorMessage += "Beginning deposit must be more than 0. <br>";
+            if (deposit1 < 0) {
+                errorMessage += "Deposit must be more than 0. <br>";
             }
             else {
-                annuity.setDeposit(deposit1);
+                annuity.setDepositStartOfMonth(deposit1);
             }
         }catch(Exception e) {
-            errorMessage += "Deposit error: " + e.getMessage() + "<br>";
+            errorMessage += "Beginning of month deposit error: " + e.getMessage() + "<br>";
         }
         // deposit at end of month
         try {
-            deposit2 = Double.parseDouble(request.getParameter("amt1"));
-            if (deposit2 <= 0) {
-                errorMessage += "Beginning deposit must be more than 0. <br>";
+            deposit2 = Double.parseDouble(request.getParameter("amt2"));
+            if (deposit2 < 0) {
+                errorMessage += "Deposit must be more than 0. <br>";
             }
             else {
-                annuity.setDeposit(deposit2);
+                annuity.setDepositEndOfMonth(deposit2);
             }
         }catch(Exception e) {
-            errorMessage += "Deposit error: " + e.getMessage() + "<br>";
+            errorMessage += "End of month deposit error: " + e.getMessage() + "<br>";
         }
 
         try {

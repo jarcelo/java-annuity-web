@@ -16,35 +16,41 @@
         <title>Annuity Results</title>
     </head>
     <body>
-        <h1 class="text-center">Annuity Results</h1>
-        <hr>
-        <br>
-        <br>
-        <h4 class="text-center">
-            An annuity with deposit of: ${annuity.deposit} each month earning 
-            ${annuity.rate} annually will have a value of:
-            ${annuity.finalValue} after
-            ${annuity.term} months.
-        </h4>
-        
-        <p class="text-center"> Using  standard jsp tags: <br>
-            An annuity with deposit of: 
-            <jsp:getProperty name="annuity" property="deposit" />
-            each month earning 
-            <jsp:getProperty name="annuity" property="rate" />
-            annually will have a value of:
-            <jsp:getProperty name="annuity" property="finalValue" />
-            after
-            <jsp:getProperty name="annuity" property="term" />
-            months.
-        </p>
-        
-        <form action="AnnuitySchedule.jsp" method="post">
-            <input type="submit" value="Schedule"/>
-        </form>
-        
-        <form action="NewAnnuity" method="post">
-            <input type="submit" value="New Annuity">
-        </form>
+        <div class="container">
+             <div class="jumbotron">
+            <h1 class="text-center">Annuity Results</h1>
+            <hr>
+            <br>
+            <h4 class="text-center">
+                An annuity with deposit of: ${annuity.depositStartOfMonth} each month,
+                and deposit of : ${annuity.depositEndOfMonth} earning 
+                ${annuity.rate} annually will have a value of:
+                
+                ${annuity.term} months.
+            </h4>
+
+            <p class="text-center"> Using  standard jsp tags: <br>
+                An annuity with a deposit of: 
+                <jsp:getProperty name="annuity" property="depositStartOfMonth" />
+                at the start of the month and a deposit of : 
+                <jsp:getProperty name="annuity" property="depositEndOfMonth" />
+                at end of the month earning 
+                <jsp:getProperty name="annuity" property="rate" />
+                annually will have a value of:
+                <jsp:getProperty name="annuity" property="finalValue" />
+                after
+                <jsp:getProperty name="annuity" property="term" />
+                months.
+            </p>
+
+            <form action="AnnuitySchedule.jsp" method="post">
+                <input class="btn bt-default center-block" type="submit" value="Schedule"/>
+            </form>
+
+            <form action="NewAnnuity" method="post">
+                <input class="btn btn-info center-block" type="submit" value="New Annuity">
+            </form>
+        </div>
+        </div>      
     </body>
 </html>

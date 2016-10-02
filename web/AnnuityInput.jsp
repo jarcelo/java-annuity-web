@@ -19,30 +19,34 @@
                 <br>
                 <br>
                 <div class="form-group">
-                    <label  for="amt1" class="col-sm-6 control-label">Deposit at Beginning of Month</label>
-                    <div class="col-sm-3">
-                        <input class="form-control" type="text" name="amt1" id="amt1" value="${annuity.deposit}" placeholder="Deposit"/>
+                    <label  for="amt1" class="col-sm-5 control-label">Deposit at Beginning of Month</label>
+                    <div class="input-group col-sm-3">
+                        <div class="input-group-addon">$</div>
+                        <input class="form-control" type="text" name="amt1" id="amt1" value="${annuity.depositStartOfMonth}" placeholder="Deposit 1"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="amt2" class="col-sm-6 control-label">Deposit at End of the Month</label>
-                    <div class="col-sm-3">
-                        <input class="form-control" type="text" name="amt2" id="amt2" value=""/>
+                    <label for="amt2" class="col-sm-5 control-label">Deposit at End of the Month</label>
+                    <div class="input-group col-sm-3">
+                        <div class="input-group-addon">$</div>
+                        <input class="form-control" type="text" name="amt2" id="amt2" value="${annuity.depositEndOfMonth}" placeholder="Deposit 2"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="irt" class="col-sm-6 control-label">Annual Interest Rate</label>
-                    <div class="col-sm-3">
+                    <label for="irt" class="col-sm-5 control-label">Annual Interest Rate</label>
+                    <div class="input-group col-sm-3">
+                        <div class="input-group-addon">i</div>
                         <input class="form-control" type="text" name="irt" id="irt" value="${annuity.rate}" placeholder="Rate in decimal"/>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="term" class="col-sm-6 control-label">Term (in months)</label>
-                    <div class="col-sm-3">
-                        <input class="form-control" type="text" name="term" id="term" value="${annuity.rate}" placeholder=""/>
+                    <label for="term" class="col-sm-5 control-label">Term (in months)</label>
+                    <div class="input-group col-sm-3">
+                        <div class="input-group-addon">t</div>
+                        <input class="form-control" type="text" name="term" id="term" value="${annuity.term}" placeholder="Term in months"/>
                     </div>
                 </div>
 
@@ -57,7 +61,7 @@
 
 <!--
                 Deposit at Begining of Month:
-                <input type="text" name="amt1" id="amt1" value="${annuity.deposit}"/><br><br>
+                <input type="text" name="amt1" id="amt1" value="${annuity.depositStartOfMonth}"/><br><br>
                 Deposit at End of Month:
                 <input type="text" name="amt2" id="amt2" value=""/><br><br>
                 Annual Interest Rate:
