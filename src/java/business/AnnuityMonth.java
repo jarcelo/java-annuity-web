@@ -3,10 +3,7 @@ package business;
 
 import java.text.NumberFormat;
 
-/**
- *
- * @author josepharcelo
- */
+
 public class AnnuityMonth
 {
     private int month;
@@ -38,11 +35,6 @@ public class AnnuityMonth
     {
         this.month = month;
     }
-
-//    public double getBeginningBalance()
-//    {
-//        return beginningBalance;
-//    }
     
     public String getBeginningBalance()
     {
@@ -54,10 +46,6 @@ public class AnnuityMonth
         this.beginningBalance = beginningBalance;
     }
 
-//    public double getDeposit()
-//    {
-//        return deposit;
-//    }
     public String getDeposit()
     {
         return currency.format(deposit);
@@ -67,10 +55,6 @@ public class AnnuityMonth
         this.deposit = deposit;
     }
 
-//    public double getInterestEarned()
-//    {
-//        return interestEarned;
-//    }
     public String getInterestEarned()
     {
         return currency.format(interestEarned);
@@ -81,10 +65,6 @@ public class AnnuityMonth
         this.interestEarned = interestEarned;
     }
 
-//    public double getEndingBalance()
-//    {
-//        return endingBalance;
-//    }
     public String getEndingBalance()
     {
         return currency.format(endingBalance);
