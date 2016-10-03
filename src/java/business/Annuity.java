@@ -4,7 +4,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class Annuity {
-   private double depositStartOfMonth, depositEndOfMonth, rate;
+   private double depositStartOfMonth, depositEndOfMonth, rate, totalInterestEarned;
    private int term;
    //private double[] bbal, iearn, ebal;
    private double[] bbalDeposit1, iearnDeposit1, ebalDeposit1, 
@@ -19,6 +19,7 @@ public class Annuity {
        this.rate = 0;
        this.term = 0;
        this.built = false;
+       this.totalInterestEarned = 0;
    }
    
    public Annuity(double depositStartOfMonth, double rate, int term) {
@@ -49,6 +50,8 @@ public class Annuity {
    }
    
    public String getFormattedRate() {
+       percent.setMinimumFractionDigits(1);
+       percent.setMaximumFractionDigits(5);
        return percent.format(this.rate);
    }
 
@@ -134,6 +137,7 @@ public class Annuity {
             this.ebalDeposit1[i] = (bbalDeposit1[i] + this.depositStartOfMonth + this.iearnDeposit1[i]);
             this.iearnDeposit2[i] = bbalDeposit2[i] * (this.rate / 12.0);
             this.ebalDeposit2[i] = bbalDeposit2[i] + this.depositEndOfMonth + this.iearnDeposit2[i];
+            this.totalInterestEarned += this.iearnDeposit1[i] + iearnDeposit2[i];
         }
        
        
@@ -198,6 +202,11 @@ public class Annuity {
     
     public void setDepositEndOfMonth(double depositEndOfMonth){
         this.depositEndOfMonth = depositEndOfMonth;
+    }
+
+    public String getformattedTotalInterestEarned()
+    {
+        return currency.format(totalInterestEarned);
     }
 }
 

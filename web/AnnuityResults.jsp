@@ -27,10 +27,10 @@
                             An annuity with a deposit of 
                             <!--<strong> <jsp:getProperty name="annuity" property="depositStartOfMonth" /> </strong>-->
                             <strong> <jsp:getProperty name="annuity" property="formattedDepositStartOfMonth" /> </strong>
-                            at the start of the month and a deposit of  
+                            at start of month and a deposit of  
                             <!--<strong> <jsp:getProperty name="annuity" property="depositEndOfMonth" /> </strong>-->
                             <strong> <jsp:getProperty name="annuity" property="formattedDepositEndOfMonth" /> </strong>
-                            at end of the month earning 
+                            at end of month earning 
                             <!--<strong> <jsp:getProperty name="annuity" property="rate" /> </strong>-->
                             <strong> <jsp:getProperty name="annuity" property="formattedRate" /> </strong>                           
                             annually will have a value of
@@ -38,8 +38,9 @@
                             <strong> <jsp:getProperty name="annuity" property="formattedFinalValue" /> </strong>
                             after
                             <strong> <jsp:getProperty name="annuity" property="term" /> </strong>
-                            months.
-                        </p>
+                            months, which includes
+                            <strong> <jsp:getProperty name="annuity" property="formattedTotalInterestEarned" /> </strong>
+                            in interest earned.
                     </div>
                     <div class="col-sm-6">
                         <div class="row">
