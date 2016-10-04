@@ -3,7 +3,6 @@ package servlets;
 
 import business.Annuity;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -29,63 +28,68 @@ public class AnnuityCalcServlet extends HttpServlet
         int term;
         
         Annuity annuity = new Annuity();
-        // Deposits can be made at beginning of the month, end of the month or both
-        // deposit at beginning of month
+
         try {
             deposit1 = Double.parseDouble(request.getParameter("amt1"));
             if (deposit1 < 0) {
-                errorMessage += "Deposit must be more than 0. <br>";
+                throw new IllegalArgumentException();
             }
             else {
                 annuity.setDepositStartOfMonth(deposit1);
             }
+        }catch(IllegalArgumentException e) {
+            errorMessage += "Beginning of month input error (Deposit must be at least $0.0). <br>";
         }catch(Exception e) {
-            errorMessage += "Beginning of month deposit error: " + e.getMessage() + "<br>";
+            errorMessage += "Beg. of month deposit error. Enter a valid value. <br>";
         }
-        // deposit at end of month
+        
         try {
             deposit2 = Double.parseDouble(request.getParameter("amt2"));
             if (deposit2 < 0) {
-                errorMessage += "Deposit must be more than 0. <br>";
+                throw new IllegalArgumentException();
             }
             else {
                 annuity.setDepositEndOfMonth(deposit2);
             }
+        }catch(IllegalArgumentException e) {
+            errorMessage += "End of month input error (Deposit must be at least $0.0). <br>";
         }catch(Exception e) {
-            errorMessage += "End of month deposit error: " + e.getMessage() + "<br>";
+            errorMessage += "End of month deposit error. Enter a valid value.<br>";
         }
 
         try {
             rate = Double.parseDouble(request.getParameter("irt"));
             if (rate <= 0) {
-                errorMessage += "Interest rate must be more than 0. <br>";
+                throw new IllegalArgumentException();
             }
             else {
                 annuity.setRate(rate);
             }
+        }catch(IllegalArgumentException e){
+            errorMessage += "Rate input error (Interest rate must be greater than 0).<br>";
         }catch(Exception e) {
-            errorMessage += "Rate error: " + e.getMessage() + "<br>";
+            errorMessage += "Rate input error. Enter a valid value.<br>";
         }
         
         try {
             term = Integer.parseInt(request.getParameter("term"));
             if (term <= 0) {
-                errorMessage += "Term must be more than 0. <br>";
+                throw new IllegalArgumentException();
             }
             else {
                 annuity.setTerm(term);
             }
+        }catch(IllegalArgumentException e) {
+            errorMessage += "Term input error (Term must be greater than 0).<br>";
         }catch(Exception e) {
-            errorMessage += "Term error: " + e.getMessage() + "<br>";
+            errorMessage += "Term input error. Enter a valid value.<br>";
         }
         
         if (!errorMessage.isEmpty()) {
             URL = "/AnnuityInput.jsp";
             request.setAttribute("errorMessage", errorMessage);
         }
-        
-        //request.setAttribute("annuity", annuity);
-        
+                
         HttpSession session = request.getSession();
         session.setAttribute("annuity", annuity);
         

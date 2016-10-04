@@ -16,7 +16,7 @@
             <h2 class="text-center">Annuity Calculator</h1>
             <br>
             <div class="row">
-                <div class="text-danger col-sm-4 col-sm-offset-4">
+                <div class="text-danger col-sm-5 col-sm-offset-3">
                     ${errorMessage}
                 </div>
             </div>
