@@ -24,7 +24,7 @@ public class AnnuityCalcServlet extends HttpServlet
         String URL = "/AnnuityResults.jsp";
         String errorMessage = "";
         
-        double deposit1, deposit2, rate;
+        double deposit1 = 0, deposit2 = 0, rate;
         int term;
         
         Annuity annuity = new Annuity();
@@ -45,6 +45,9 @@ public class AnnuityCalcServlet extends HttpServlet
         
         try {
             deposit2 = Double.parseDouble(request.getParameter("amt2"));
+            if (deposit1 == 0 && deposit2 == 0) {
+                errorMessage += "Deposit error (Both deposits cannot be zero).<br>";
+            }
             if (deposit2 < 0) {
                 throw new IllegalArgumentException();
             }
