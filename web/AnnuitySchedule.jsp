@@ -30,6 +30,7 @@
                 <tr>
                     <th class="text-center">Month</th>
                     <th class="text-center">Beginning Balance</th>
+                    <th class="text-center">Deposit</th>
                     <th class="text-center">Interest Earned</th>
                     <th class="text-center">Ending Balance</th>
                 </tr>
@@ -37,6 +38,7 @@
                     <tr>
                         <td class="text-center">${annuityMonth.month}</td>
                         <td class="text-center">${annuityMonth.beginningBalance}</td>
+                        <td class="text-center">${annuityMonth.deposit}</td>
                         <td class="text-center">${annuityMonth.interestEarned}</td>
                         <td class="text-center">${annuityMonth.endingBalance}</td>
                     </tr>
