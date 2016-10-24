@@ -69,7 +69,7 @@ public class AnnuityCalcServlet extends HttpServlet
                 annuity.setRate(rate);
             }
         }catch(IllegalArgumentException e){
-            errorMessage += "Rate input error (Interest rate must be greater than 0).<br>";
+            errorMessage += "Rate input error (Interest rate must be greater than zero).<br>";
         }catch(Exception e) {
             errorMessage += "Rate input error. Enter a valid value.<br>";
         }
@@ -83,7 +83,7 @@ public class AnnuityCalcServlet extends HttpServlet
                 annuity.setTerm(term);
             }
         }catch(IllegalArgumentException e) {
-            errorMessage += "Term input error (Term must be greater than 0).<br>";
+            errorMessage += "Term input error (Term must be greater than zero).<br>";
         }catch(Exception e) {
             errorMessage += "Term input error. Enter a valid value.<br>";
         }
